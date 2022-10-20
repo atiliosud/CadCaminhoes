@@ -1,0 +1,60 @@
+﻿@using CadCaminhoes.MVC.Helpers
+@model IEnumerable<CadCaminhoes.MVC.Models.Caminhao>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Novo Caminhão</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Modelo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FabricacaoAno)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ModeloAno)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreateBy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreateAt)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Modelo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FabricacaoAno)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ModeloAno)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreateBy.Email)
+            </td>
+            <td>
+                @item.CreateAt.Relative()
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Detalhes</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Deletar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
