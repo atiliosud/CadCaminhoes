@@ -56,7 +56,7 @@ namespace CadCaminhoes.Testes
 
             var caminhoes = viewResult.Model as List<Caminhao>;
             caminhoes.Should().NotBeNull();
-            caminhoes!.Count.Should().BeLessThanOrEqualTo(4);
+            caminhoes!.Count.Should().BeGreaterThanOrEqualTo(4);
 
         }
 
